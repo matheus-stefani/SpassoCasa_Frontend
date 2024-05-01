@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes as Switch, Navigate } from "react-router-dom"
-import {PaginaInicial} from "../pages/index"
+import { Contatos,Login,PaginaInicial,Produtos,Sobre,Cadastro } from "../pages"
+
 export const Routes = () => {
     return (
 
@@ -7,6 +8,12 @@ export const Routes = () => {
 
             <Switch>
                 <Route path="/pagina-inicial" element={<PaginaInicial/>} />
+                <Route path="/contato" element={<Contatos/>} />
+                <Route path="/produtos" element={<Produtos/>} />
+                <Route path="/sobre" element={<Sobre/>} />
+                <Route path="/login" element={<Login/>} />
+                <Route path="/cadastro" element={<Cadastro/>} />
+                
 
                 <Route path="*" element={<Navigate to ="/pagina-inicial"/>} />
             </Switch>
