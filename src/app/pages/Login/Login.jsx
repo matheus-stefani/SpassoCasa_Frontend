@@ -14,7 +14,8 @@ export const Login = () => {
         <div className="container p-5 col-12 col-sm-12 col-md-10 col-lg-9 col-xl-5 col-xll-4">
 
             <div className="d-flex justify-content-center align-items-center" >
-                <img src={logo} alt="Logo Spasso Casa" className="p-2 mb-3" style={{ height: '125px' }} />
+                <Link to="/pagina-inicial"><img src={logo} alt="Logo Spasso Casa" className="p-2 mb-3" style={{ height: '125px' }} /></Link>
+                
             </div>
             <form method="POST" className="border border-dark p-5 rounded">
             <h2>Fazer login:</h2>

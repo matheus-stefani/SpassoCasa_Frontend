@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { BarraDeNav } from "../BarraDeNav/BarraDeNav"
 import slide1 from "./ImagensSlide/Slide 1.png"
 import slide2 from "./ImagensSlide/Slide 2.png"
@@ -9,36 +10,43 @@ export const PaginaInicial = () => {
         <div>
             <BarraDeNav />
             <div className="container py-5">
-                <div className="carousel slide" data-bs-ride="carousel" id="#ads">
-                    <div class="carousel-indicators">
-                        <button class="active" data-bs-target="#ads" data-bs-slide-to="0"></button>
-                        <button class="" data-bs-target="#ads" data-bs-slide-to="1"></button>
-                        <button class="" data-bs-target="#ads" data-bs-slide-to="2"></button>
-                        <button class="" data-bs-target="#ads" data-bs-slide-to="3"></button>
+                <div className="carousel slide" data-bs-ride="carousel" id="ads">
+                    <div className="carousel-indicators">
+                        <button className="active" data-bs-target="#ads" data-bs-slide-to="0"></button>
+                        <button className="" data-bs-target="#ads" data-bs-slide-to="1"></button>
+                        <button className="" data-bs-target="#ads" data-bs-slide-to="2"></button>
+                        <button className="" data-bs-target="#ads" data-bs-slide-to="3"></button>
                     </div>
                     <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img src={slide1} className="d-block w-90"></img>
+                        <div className="carousel-item active" data-bs-interval="50000">
+                            <img src={slide1} className="d-block w-100"></img>
                         </div>
-                        <div className="carousel-item">
-                            <img src={slide2 } className="d-block w-90"></img>
+                        <div className="carousel-item" data-bs-interval="50000">
+                            <img src={slide2 } className="d-block w-100"></img>
                         </div>
-                        <div className="carousel-item">
-                            <img src={slide3} className="d-block w-90"></img>
+                        <div className="carousel-item" data-bs-interval="50000">
+                            <img src={slide3} className="d-block w-100"></img>
                         </div>
-                        <div className="carousel-item">
-                            <img src={slide4} className="d-block w-90"></img>
+                        <div className="carousel-item" data-bs-interval="50000">
+                            <img src={slide4} className="d-block w-100"></img>
                         </div>
                         
                     </div>
                     <button className="carousel-control-prev" data-bs-target="#ads" data-bs-slide="prev" >
-                        <span class="carousel-control-prev-icon"></span>
+                        <span className="carousel-control-prev-icon"></span>
                     </button>
                     <button className="carousel-control-next" data-bs-target="#ads" data-bs-slide="next" >
-                        <span class="carousel-control-next-icon"></span>
+                        <span className="carousel-control-next-icon"></span>
                     </button>
                 </div>
+            <h3 className="mt-3">Principais produtos: <Link to="/produtos"><small className="">Ir para produtos</small></Link></h3>
+
+            <h3 className="mt-3">Categoria produtos: <Link to="/produtos"><small className="">Ir para produtos</small></Link></h3>
             </div>
+            <div className="container">
+
+            </div>
+            
         </div>
 
     )

@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.js"
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+//import "../node_modules/bootstrap/dist/css/bootstrap.css"
+//import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min'
+//import "../node_modules/bootstrap/dist/js/bootstrap.bundle"
+//import "../node_modules/bootstrap/dist/js/bootstrap.esm"
 import { App } from './app/App';
 import reportWebVitals from './reportWebVitals';
 
