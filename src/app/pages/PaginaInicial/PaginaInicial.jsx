@@ -10,6 +10,7 @@ export const PaginaInicial = () => {
         <div>
             <BarraDeNav />
             <div className="container py-5">
+            <h1 className="d-flex justify-content-center mb-4">Temos {new Date(Date.now()).getFullYear()-2009} anos de história!</h1>
                 <div className="carousel slide" data-bs-ride="carousel" id="ads">
                     <div className="carousel-indicators">
                         <button className="active" data-bs-target="#ads" data-bs-slide-to="0"></button>
@@ -32,20 +33,19 @@ export const PaginaInicial = () => {
                         </div>
                         
                     </div>
-                    <button className="carousel-control-prev" data-bs-target="#ads" data-bs-slide="prev" >
+                    <button className="carousel-control-prev opacity-100" data-bs-target="#ads" data-bs-slide="prev" >
                         <span className="carousel-control-prev-icon"></span>
                     </button>
-                    <button className="carousel-control-next" data-bs-target="#ads" data-bs-slide="next" >
+                    <button className="carousel-control-next opacity-100 shadow-lg text-info" data-bs-target="#ads" data-bs-slide="next" >
                         <span className="carousel-control-next-icon"></span>
                     </button>
                 </div>
+                
             <h3 className="mt-3">Principais produtos: <Link to="/produtos"><small className="">Ir para produtos</small></Link></h3>
 
             <h3 className="mt-3">Categoria produtos: <Link to="/produtos"><small className="">Ir para produtos</small></Link></h3>
             </div>
-            <div className="container">
-
-            </div>
+            
             
         </div>
 

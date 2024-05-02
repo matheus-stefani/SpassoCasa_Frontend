@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import logo from "./Imagens/logo spasso.jpg"
-import "./barraDeNav.css"
+
 
 
 export const BarraDeNav = () => {
@@ -15,7 +15,7 @@ export const BarraDeNav = () => {
                 <div className="container">
 
 
-                    <img src={logo} alt="Logo Spasso Casa" className="h100 p-2 me-5" />
+                    <Link to="/pagina-inicial"><img src={logo} alt="Logo Spasso Casa" className="p-2 me-5" style={{ height: '100px' }}/></Link>
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#menuNavbar"

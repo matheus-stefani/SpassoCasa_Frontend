@@ -1,9 +1,11 @@
 
 import logo from "../BarraDeNav/Imagens/logo spasso.jpg"
-import "../BarraDeNav/barraDeNav.css"
+
 import { Link } from "react-router-dom"
 
 export const Cadastro = ()=>{
+
+    const onClickButton = (e)=>e.preventDefault();
 
     return (
         <div className="container p-5 col-12 col-sm-12 col-md-10 col-lg-9 col-xl-5 col-xll-4">
@@ -15,36 +17,36 @@ export const Cadastro = ()=>{
             <h2 className="mb-4">Fazer cadastro:</h2>
 
             <div className="mb-3">
-                    <label for="nome" className="form-label">Nome completo:</label>
+                    <label forhtml="nome" className="form-label">Nome completo:</label>
                     <input type="text" id="nome" className="form-control" placeholder="Digite seu nome completo" />
                     
                 </div>
 
                 <div className="mb-3">
-                    <label for="email" className="form-label">Email:</label>
+                    <label forhtml="email" className="form-label">Email:</label>
                     <input type="email" id="email" className="form-control" placeholder="Digite seu e-mail" />
                     <div className="form-text"> Não compartilhe seu e-mail com terceiros.</div>
                 </div>
 
 
                 <div className="mb-3">
-                    <label for="senha" className="form-label">Senha:</label>
+                    <label forhtml="senha" className="form-label">Senha:</label>
                     <input type="password" id="senha" className="form-control" placeholder="Digite sua senha" />
                     <div className="form-text">Não compartilhe sua  senha com terceiros.</div>
                 </div>
 
                 <div className="mb-5">
-                    <label for="senhaVerificacao" className="form-label">Confirme a senha:</label>
+                    <label forhtml="senhaVerificacao" className="form-label">Confirme a senha:</label>
                     <input type="password" id="senhaVerificacao" className="form-control" placeholder="Digite sua senha novamente" />
                 </div>
                
 
-                <div class="row justify-content-between">
-                    <div class="col-md-auto mb-3">
-                            
+                <div className="row justify-content-between">
+                    <div className="col-md-auto mb-3">
+                    <button className="btn btn-secondary" onClick={(e)=>e.preventDefault()}><Link to="/login" className="text-decoration-none text-white">Voltar para login</Link></button>     
                     </div>
-                    <div class="col-md-auto">
-                        <button className="btn btn-warning" type="submit">Cadastrar</button>
+                    <div className="col-md-auto">
+                        <button className="btn btn-warning" type="submit">Finalizar cadastro</button>
                     </div>
                 </div>
 

@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom"
 import logo from "../BarraDeNav/Imagens/logo spasso.jpg"
-import "../BarraDeNav/barraDeNav.css"
+
 
 
 export const Login = () => {
 
-    const onClickButton = (e)=>{
-        e.preventDefault();
-    }
+    const onClickButton = (e)=>e.preventDefault();
+    
 
 
     return (
@@ -21,14 +20,14 @@ export const Login = () => {
             <h2>Fazer login:</h2>
 
                 <div className="mb-3">
-                    <label for="email" className="form-label">Email:</label>
+                    <label forhtml="email" className="form-label">Email:</label>
                     <input type="email" id="email" className="form-control" placeholder="Digite seu e-mail" />
                     <div className="form-text"> Não compartilhe seu e-mail com terceiros.</div>
                 </div>
 
 
                 <div className="mb-3">
-                    <label for="senha" className="form-label">Senha:</label>
+                    <label forhtml="senha" className="form-label">Senha:</label>
                     <input type="password" id="senha" className="form-control" placeholder="Digite sua senha" />
                     <div className="form-text">Não compartilhe sua  senha com terceiros.</div>
                 </div>
@@ -38,15 +37,15 @@ export const Login = () => {
 
                 <div className="mb-3 form-check">
                     <input type="checkbox" id="lembrar" className="form-check-input" />
-                    <label for="lembrar" className="ms-1 form-check-label" >Lembrar de mim</label>
+                    <label forhtml="lembrar" className="ms-1 form-check-label" >Lembrar de mim</label>
 
                 </div>
 
-                <div class="row justify-content-between">
-                    <div class="col-md-auto mb-3">
+                <div className="row justify-content-between">
+                    <div className="col-md-auto mb-3">
                         <button className="btn btn-secondary" onClick={(e)=>onClickButton(e)}><Link to="/cadastro" className="text-decoration-none text-white">Cadastrar</Link></button>
                     </div>
-                    <div class="col-md-auto">
+                    <div className="col-md-auto">
                         <button className="btn btn-primary" type="submit">Entrar</button>
                     </div>
                 </div>
