@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes as Switch, Navigate } from "react-router-dom"
 import { Contatos,Login,PaginaInicial,Produtos,Sobre,Cadastro } from "../pages"
 import { ProdutoInfos } from "../pages/Produtos/ProdutoInfos"
+import { AdicionarProduto } from "../pages/Produtos/AdicionarProduto"
 
 export const Routes = () => {
     return (
@@ -15,6 +16,7 @@ export const Routes = () => {
                 <Route path="/login" element={<Login/>} />
                 <Route path="/cadastro" element={<Cadastro/>} />
                 <Route path="/produtos/1" element={<ProdutoInfos/>} />
+                <Route path="/produtos/adicionar-produto" element={<AdicionarProduto/>} />
                 
 
                 <Route path="*" element={<Navigate to ="/pagina-inicial"/>} />

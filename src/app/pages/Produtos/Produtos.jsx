@@ -9,6 +9,7 @@ export const Produtos = () => {
             <BarraDeNav />
             <div className="container ">
 
+            <Link to="/produtos/adicionar-produto"><button className="btn btn-primary my-4 ">Adicionar produto</button></Link>
                 <div className="row row-cols-xl-6 row-cols-xl-5 row-cols-md-4 row-cols-sm-3 row-cols-2">
 
 
