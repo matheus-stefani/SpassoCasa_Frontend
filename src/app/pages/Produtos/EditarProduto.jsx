@@ -1,109 +1,44 @@
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../BarraDeNav/Imagens/logo spasso.jpg"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Axios from "axios"
 
-
-const VisualizarProduto = (props) => {
-
-    const pegarNomeImg = (img) => {
-       
-        let pegarIndexComeca = 0;
-        
-        let i = img.length-1;
-       
-        while (i!=0) {
-            if(img[i] == "\\"){
-                break;
-            }
-            
-            pegarIndexComeca = i;
-            i--;
-        }
-    
-        let pegarNome = "";
-        for (let i = pegarIndexComeca; i < img.length; i++) {
-            pegarNome += img[i];
-        }
-        
-        return pegarNome;
-    }
-
+export const EditarProduto = () => {
 
     const teste = ()=>{
 
         try{
-            return require("./ImagensProdutos/"+pegarNomeImg(props.urlImg))
+            return require("./ImagensProdutos/"+urlImg)
         }
         catch{
             return "";
         }
     }
 
-    return(
-
-        <div className="card border-0 col-4" style={{ height: "350px" }}>
-            {console.log(props.urlImg)}
-                <Link to={""} className="text-decoration-none text-dark">
-                    <div className="card-body p-3 d-flex" style={{ height: "350px" }}>
-                        <div className="justify-content-center">
-                            <img src={teste()} className="img-fluid" style={{ height: "125px" }} />
-                            <h6 className="mt-3 card-text col-11 mb-3 text-break">{props.nome}</h6>
-                            <strong className="bg-warning rounded p-1 card-text opacity-75">R$ {props.preco}</strong>
-                        </div>
-                    </div>
-                </Link>
-        </div>
-    )
-}
-
-
-export const AdicionarProduto = () => {
-
-    const pegarNomeImg = (img) => {
-       
-        let pegarIndexComeca = 0;
-        
-        let i = img.length-1;
-       
-        while (i!=0) {
-            if(img[i] == "\\"){
-                break;
-            }
-            
-            pegarIndexComeca = i;
-            i--;
-        }
-    
-        let pegarNome = "";
-        for (let i = pegarIndexComeca; i < img.length; i++) {
-            pegarNome += img[i];
-        }
-        
-        return pegarNome;
-    }
-
     const history = useNavigate();
 
     const onClickButton = (e) => {
 
-    
-        Axios.post('https://localhost:7032/Produtos',
+        
+        Axios.put('https://localhost:7032/Produtos/'+pegarId(window.location.pathname),
             {
-
+                
+                "produtoId": pegarId(window.location.pathname),
                 "nome": nome,
                 "descricao": desc,
                 "preco": preco,
                 "especAntiDerrapante": anti,
                 "especAntiCoeficiente": coeficiente,
-                "urlImagem": pegarNomeImg(urlImg),
+                "urlImagem": urlImg,
                 "quantidade": quantidade,
+                
+
             }
-        ).then((res) => res.data).then((res) => {
+        ).then((res) => res.data).then(() => {
             
-            alert("O produto com o id "+res+" foi adicionado com sucesso")
+            alert("O produto foi editado com sucesso")
             history("/produtos");
-        }).catch((res) => alert("Erro ao adicionar o produto!!!"))
+        }).catch((res) => alert("Erro ao editar o produto!!!"))
 
 
     };
@@ -113,15 +48,71 @@ export const AdicionarProduto = () => {
 
 
     const [nome, setNome] = useState("");
-    const [preco, setPreco] = useState();
+    const [preco, setPreco] = useState(0);
+    const [quantidade, setQuantidade] = useState(0);
     const [anti, setAnti] = useState("");
     const [coeficiente, setCoeficiente] = useState("");
     const [urlImg, setUrlImg] = useState("");
     const [desc, setDesc] = useState("");
-    const [quantidade, setQuantidade] = useState();
-    const [mostrarVi, setMostrarVi] = useState(false);
 
-   
+
+    const pegarNomeImg = (img) => {
+       
+        let pegarIndexComeca = 0;
+        
+        let i = img.length-1;
+       
+        while (pegarIndexComeca!=0) {
+            if(img[i] == "\\"){
+                break;
+            }
+            
+            pegarIndexComeca = i;
+            i--;
+        }
+    
+        let pegarNome = "";
+        for (let i = pegarIndexComeca; i < img.length; i++) {
+            pegarNome += img[i];
+        }
+        
+        return pegarNome;
+    }
+
+    const pegarId = (url)=>{
+        let id = "";
+        let pos = 0;
+        for(let i  = url.length-1  ; i>0;i--){
+            if(url[i]=="/"){
+                
+                break;
+            }
+
+            pos=i;
+        }
+
+        for(let i = pos ; i<url.length;i++){
+            id+=url[i];
+        }
+
+        return id;
+    }
+
+
+    useEffect(()=>{
+        
+        Axios.get('https://localhost:7032/Produtos/'+pegarId(window.location.pathname))
+        .then((e)=>e.data).then((e)=>{
+            setNome(e.nome);
+            setPreco(e.preco);
+            setAnti(e.especAntiDerrapante);
+            setCoeficiente(e.especAntiCoeficiente);
+            setUrlImg(e.urlImagem);
+            setDesc(e.descricao);
+            setQuantidade(e.quantidade)
+        }).catch(()=>console.log("Erro ao pegar as propriedades de produto!"))
+        
+    },[])
 
 
     return (
@@ -132,7 +123,7 @@ export const AdicionarProduto = () => {
 
             </div>
             <div className="border border-dark p-5 rounded">
-                <h2>Adicionar Produto:</h2>
+                <h2>Editar Produto:</h2>
 
 
 
@@ -171,7 +162,7 @@ export const AdicionarProduto = () => {
 
                 <div className="mb-2">
                     <label forhtml="imagem" className="form-label">Imagem:</label>
-                    <input type="file" id="coeficiente" value={urlImg} onChange={(e) => setUrlImg(e.target.value)} className="form-control" />
+                    <input type="text" id="coeficiente" value={urlImg} onChange={(e) => setUrlImg(e.target.value)} className="form-control" />
                     
 
                 </div>
@@ -198,14 +189,23 @@ export const AdicionarProduto = () => {
                         <Link to="/produtos" className="text-decoration-none text-white"> <button className="btn btn-secondary">Cancelar</button></Link>
                     </div>
                     <div className="col-md-auto">
-                        <button className="btn btn-primary" onClick={(e) => onClickButton(e)}>Adicionar Produto</button>
+                        <button className="btn btn-primary" onClick={(e) => onClickButton(e)}>Editar Produto</button>
                     </div>
                 </div>
 
+               
 
-                <button onClick={()=>setMostrarVi(!mostrarVi)}>Clique</button>
-
-                    { mostrarVi && <VisualizarProduto nome={nome} urlImg={urlImg} preco={preco}/>}
+            <div className="card border-0 col-4" style={{ height: "350px" }}>
+                <Link to={""} className="text-decoration-none text-dark">
+                    <div className="card-body p-3 d-flex" style={{ height: "350px" }}>
+                        <div className="justify-content-center">
+                            <img src={teste()} className="img-fluid" style={{ height: "125px" }} />
+                            <h6 className="mt-3 card-text col-11 mb-3 text-break">{nome}</h6>
+                            <strong className="bg-warning rounded p-1 card-text opacity-75">R$ {preco}</strong>
+                        </div>
+                    </div>
+                </Link>
+            </div>
             </div>
         </div>
     )
